@@ -27,6 +27,23 @@ const Journal: Collection = {
     },
     {
       type: "string",
+      name: "subtitle",
+      label: "Subtitle",
+    },
+    {
+      type: "object",
+      name: "subtitle_vi",
+      label: "Vietnamese Subtitle",
+      fields: [
+        {
+          type: "string",
+          name: "value",
+          label: "Subtitle in Vietnamese",
+        }
+      ]
+    },
+    {
+      type: "string",
       name: "slug",
       label: "Slug",
       required: true,
@@ -39,38 +56,15 @@ const Journal: Collection = {
     },
     {
       type: "image",
-      name: "featured_image",
-      label: "Featured Image",
+      name: "hero_image",
+      label: "Hero Image",
       required: true,
     },
     {
-      type: "object",
-      name: "couple",
-      label: "Couple Information",
-      fields: [
-        {
-          type: "string",
-          name: "bride_name",
-          label: "Bride Name",
-          required: true,
-        },
-        {
-          type: "string",
-          name: "groom_name", 
-          label: "Groom Name",
-          required: true,
-        },
-        {
-          type: "string",
-          name: "nationality",
-          label: "Nationality",
-        },
-        {
-          type: "number",
-          name: "guest_count",
-          label: "Guest Count",
-        }
-      ]
+      type: "image",
+      name: "featured_image",
+      label: "Featured Image",
+      required: true,
     },
     {
       type: "object",
@@ -84,21 +78,61 @@ const Journal: Collection = {
           required: true,
         },
         {
-          type: "string",
+          type: "object",
           name: "venue_vi",
-          label: "Venue (Vietnamese)",
+          label: "Vietnamese Venue",
+          fields: [
+            {
+              type: "string",
+              name: "value",
+              label: "Venue in Vietnamese",
+            }
+          ]
         },
         {
-          type: "string",
-          name: "location",
-          label: "Location",
-          required: true,
+          type: "number",
+          name: "guest_count",
+          label: "Guest Count",
         },
         {
           type: "string",
           name: "wedding_type",
           label: "Wedding Type",
           options: ["Destination Wedding", "Local Wedding", "Traditional Wedding", "Modern Wedding"],
+        },
+        {
+          type: "object",
+          name: "wedding_type_vi",
+          label: "Vietnamese Wedding Type",
+          fields: [
+            {
+              type: "string",
+              name: "value",
+              label: "Wedding Type in Vietnamese",
+            }
+          ]
+        },
+        {
+          type: "string",
+          name: "nationality",
+          label: "Nationality",
+        },
+        {
+          type: "object",
+          name: "nationality_vi",
+          label: "Vietnamese Nationality",
+          fields: [
+            {
+              type: "string",
+              name: "value",
+              label: "Nationality in Vietnamese",
+            }
+          ]
+        },
+        {
+          type: "string",
+          name: "location",
+          label: "Location",
         },
         {
           type: "string",
@@ -109,26 +143,64 @@ const Journal: Collection = {
       ]
     },
     {
-      type: "rich-text",
-      name: "story",
-      label: "Wedding Story",
-      description: "The story of the wedding in English",
-    },
-    {
-      type: "rich-text", 
-      name: "story_vi",
-      label: "Wedding Story (Vietnamese)",
-      description: "The story of the wedding in Vietnamese",
+      type: "object",
+      name: "story_sections",
+      label: "Story Sections",
+      list: true,
+      fields: [
+        {
+          type: "string",
+          name: "title",
+          label: "Section Title",
+          required: true,
+        },
+        {
+          type: "object",
+          name: "title_vi",
+          label: "Vietnamese Section Title",
+          fields: [
+            {
+              type: "string",
+              name: "value",
+              label: "Section Title in Vietnamese",
+            }
+          ]
+        },
+        {
+          type: "string",
+          name: "content",
+          label: "Section Content",
+          required: true,
+          ui: {
+            component: "textarea",
+          },
+        },
+        {
+          type: "object",
+          name: "content_vi",
+          label: "Vietnamese Section Content",
+          fields: [
+            {
+              type: "string",
+              name: "value",
+              label: "Section Content in Vietnamese",
+              ui: {
+                component: "textarea",
+              },
+            }
+          ]
+        }
+      ]
     },
     {
       type: "object",
-      name: "gallery",
-      label: "Wedding Gallery",
+      name: "gallery_images",
+      label: "Gallery Images",
       list: true,
       fields: [
         {
           type: "image",
-          name: "image",
+          name: "url",
           label: "Image",
           required: true,
         },
@@ -157,15 +229,27 @@ const Journal: Collection = {
       fields: [
         {
           type: "string",
-          name: "role",
-          label: "Role",
+          name: "name",
+          label: "Role/Category",
           required: true,
         },
         {
           type: "string",
-          name: "name",
+          name: "vendor",
           label: "Vendor Name",
           required: true,
+        },
+        {
+          type: "object",
+          name: "vendor_vi",
+          label: "Vietnamese Vendor Name",
+          fields: [
+            {
+              type: "string",
+              name: "value",
+              label: "Vendor Name in Vietnamese",
+            }
+          ]
         },
         {
           type: "string",
